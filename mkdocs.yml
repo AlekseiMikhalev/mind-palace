@@ -5,11 +5,19 @@ site_url: ""
 repo_url: https://github.com/AlekseiMikhalev/mind-palace
 nav:
   - Introduction: index.md
-  - Projects: projects.md
-  - Coding:
-      - Learning to code:
-          - code_learning.md
-          - Frontend developer: frontend_learning.md
+  - Projects: projects/index.md
+  - Frontend: 
+      - frontend/index.md
+      - Create a website:
+        - create_website.md
+  - Backend: 
+      - backend/index.md
+      - Create CRUD app:
+        - create_crud.md
+  - Machine Learning: 
+      - machine_learning/index.md
+  - Software Architecture: 
+      - software_architecture/index.md
 
 plugins:
   - section-index
