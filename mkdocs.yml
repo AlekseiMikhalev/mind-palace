@@ -1,6 +1,7 @@
 site_name: Developer Mind Palace
 site_description: My personal mind palace that summarizes my knowledge
 site_author: Aleksei Mikhalev
+site_url: https://alekseimikhalev.github.io
 repo_url: https://github.com/alekseimikhalev
 nav:
   - Introduction: index.md
