@@ -2,7 +2,7 @@ site_name: Developer Mind Palace
 site_description: My personal mind palace that summarizes my knowledge
 site_author: Aleksei Mikhalev
 site_url: ""
-repo_url: https://github.com/alekseimikhalev
+repo_url: https://github.com/AlekseiMikhalev/mind-palace
 nav:
   - Introduction: index.md
   - Projects: projects.md
