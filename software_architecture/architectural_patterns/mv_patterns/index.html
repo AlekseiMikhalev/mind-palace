@@ -7,17 +7,17 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="My personal mind palace that summarizes my knowledge" name="description"/>
 <meta content="Aleksei Mikhalev" name="author"/>
-<link href="assets/images/favicon.png" rel="icon"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Developer Mind Palace</title>
-<link href="assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
-<link href="assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<title>Architectural Patterns - Developer Mind Palace</title>
+<link href="../../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<link href="stylesheets/extra.css" rel="stylesheet"/>
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -28,14 +28,14 @@
                 body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
                 body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
                 body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="assets/javascripts/glightbox.min.js"></script></head>
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#introduction">
+<a class="md-skip" href="#mv-architectural-patterns">
           Skip to content
         </a>
 </div>
@@ -43,8 +43,8 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="Developer Mind Palace" class="md-header__button md-logo" data-md-component="logo" href="." title="Developer Mind Palace">
-<img alt="logo" src="assets/images/logo.png"/>
+<a aria-label="Developer Mind Palace" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Developer Mind Palace">
+<img alt="logo" src="../../../assets/images/logo.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
@@ -59,7 +59,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Introduction
+              Architectural Patterns
             
           </span>
 </div>
@@ -130,8 +130,8 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Developer Mind Palace" class="md-nav__button md-logo" data-md-component="logo" href="." title="Developer Mind Palace">
-<img alt="logo" src="assets/images/logo.png"/>
+<a aria-label="Developer Mind Palace" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Developer Mind Palace">
+<img alt="logo" src="../../../assets/images/logo.png"/>
 </a>
     Developer Mind Palace
   </label>
@@ -146,43 +146,15 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Introduction
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href=".">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         Introduction
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mind-palace-structure">
-    Mind Palace Structure:
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#couple-of-words-about-me">
-    Couple of words about me
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#comments-recommendation-and-revisions">
-    Comments, recommendation and revisions
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="projects/">Projects</a>
+<a href="../../../projects/">Projects</a>
 <label for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -194,22 +166,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="projects/book_summarizer/">
+<a class="md-nav__link" href="../../../projects/book_summarizer/">
         Book Summarizer
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="projects/age_classification/">
+<a class="md-nav__link" href="../../../projects/age_classification/">
         Age Classification
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="software_architecture/">Software Architecture</a>
+<a href="../../">Software Architecture</a>
 <label for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -220,10 +192,28 @@
           Software Architecture
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="software_architecture/architectural_patterns/mv_patterns/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Architectural Patterns
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Architectural Patterns
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-ideas">
+    Key Ideas
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
@@ -238,7 +228,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="software_architecture/clean_architecture.md">
+<a class="md-nav__link" href="../../clean_architecture.md">
         None
       </a>
 </li>
@@ -251,7 +241,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="frontend/">Frontend</a>
+<a href="../../../frontend/">Frontend</a>
 <label for="__nav_4">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -275,7 +265,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="create_website.md">
+<a class="md-nav__link" href="../../../create_website.md">
         None
       </a>
 </li>
@@ -288,7 +278,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="backend/">Backend</a>
+<a href="../../../backend/">Backend</a>
 <label for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -312,7 +302,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="ci_cd_pipeline.md">
+<a class="md-nav__link" href="../../../ci_cd_pipeline.md">
         None
       </a>
 </li>
@@ -332,7 +322,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="microservices.md">
+<a class="md-nav__link" href="../../../microservices.md">
         None
       </a>
 </li>
@@ -352,7 +342,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="gateway.md">
+<a class="md-nav__link" href="../../../gateway.md">
         None
       </a>
 </li>
@@ -372,7 +362,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="data_centers.md">
+<a class="md-nav__link" href="../../../data_centers.md">
         None
       </a>
 </li>
@@ -392,7 +382,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="load_balancer.md">
+<a class="md-nav__link" href="../../../load_balancer.md">
         None
       </a>
 </li>
@@ -412,7 +402,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="message_broker.md">
+<a class="md-nav__link" href="../../../message_broker.md">
         None
       </a>
 </li>
@@ -432,7 +422,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="containers_orchestration.md">
+<a class="md-nav__link" href="../../../containers_orchestration.md">
         None
       </a>
 </li>
@@ -452,7 +442,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="data_query.md">
+<a class="md-nav__link" href="../../../data_query.md">
         None
       </a>
 </li>
@@ -472,7 +462,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="database.md">
+<a class="md-nav__link" href="../../../database.md">
         None
       </a>
 </li>
@@ -492,7 +482,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="storage.md">
+<a class="md-nav__link" href="../../../storage.md">
         None
       </a>
 </li>
@@ -512,7 +502,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="cache.md">
+<a class="md-nav__link" href="../../../cache.md">
         None
       </a>
 </li>
@@ -532,7 +522,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="text_search.md">
+<a class="md-nav__link" href="../../../text_search.md">
         None
       </a>
 </li>
@@ -552,7 +542,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="analytics.md">
+<a class="md-nav__link" href="../../../analytics.md">
         None
       </a>
 </li>
@@ -572,7 +562,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="scheduller.md">
+<a class="md-nav__link" href="../../../scheduller.md">
         None
       </a>
 </li>
@@ -592,7 +582,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="big_data.md">
+<a class="md-nav__link" href="../../../big_data.md">
         None
       </a>
 </li>
@@ -605,7 +595,7 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="machine_learning/">Machine Learning</a>
+<a href="../../../machine_learning/">Machine Learning</a>
 <label for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -629,7 +619,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="machine_learning/nlp.md">
+<a class="md-nav__link" href="../../../machine_learning/nlp.md">
         None
       </a>
 </li>
@@ -654,18 +644,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#mind-palace-structure">
-    Mind Palace Structure:
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#couple-of-words-about-me">
-    Couple of words about me
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#comments-recommendation-and-revisions">
-    Comments, recommendation and revisions
+<a class="md-nav__link" href="#key-ideas">
+    Key Ideas
   </a>
 </li>
 </ul>
@@ -675,46 +655,29 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/index.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/software_architecture/architectural_patterns/mv_patterns.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="introduction">Introduction</h1>
-<p>This is my personal Mind Palace, where I collect knowledge from my learning journey. Every time I read some tech book, documentation, science article, or <strong>"how to"</strong> recipe, I make a summary in the respective section. After I watched a course or project I make a summary too. I took this approach to solve one simple problem - remember what I've read or learnt and be able to apply the knowledge in my life. </p>
-<h2 id="mind-palace-structure">Mind Palace Structure:</h2>
-<p>Mind Palace consist of the following nested categories:</p>
+<h1 id="mv-architectural-patterns">MV* Architectural Patterns</h1>
+<p>Brief description of the following patterns:</p>
 <ul>
-<li>
-<p><strong>Knowledge section</strong> (the widest knowledge group)</p>
-<ul>
-<li>
-<p><strong>Knowledge concept</strong> (category of the group related to the particular technology)</p>
-<ul>
-<li><strong>Code snippets</strong> (examples of how to implement the particular knowledge concept)
-Code snippets also include the detailed explanation of each line of code. That helps me to understand
-how the code works and remember it later during the implementation. </li>
+<li>MVC</li>
+<li>MVVM</li>
+<li>MVP</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>The knowledge base in this digital Mind Palace is related to various software development areas.
-My learning path is focused on expanding my knowledge step-by-step and eventually building a
-solid base for developing robust complex systems. Therefore, it includes knowledge from frontend 
-and backend development, machine learning, data science, databases, software architecture, etc. </p>
-<h2 id="couple-of-words-about-me">Couple of words about me</h2>
-<p>I am a self-taught software developer. I started my programming journey by heart.
-In my childhood I wanted to be a programmer. I took some gadgets (whether it was my grandfather's watch
-or music player from the town dump), disassemble them and tried to assemble again. I was extremely
-interested to understand how they work. But something went wrong and I became a lawyer.
-My lawyer career includes eight years in international law firms and venture funds as a corporate lawyer. 
-Spending long hours on drafting documents, doing due diligence or revising prospectuses for
-capital market deals, I realised that it's not what I want to do for life. It is just not 
-my passion. And in my spare time I started to learn programing. Step-by-step I switched into 
-software engineering and left my lawyer career behind. That was, and actually still very hard... </p>
-<p>But you know what? I am happy! It gives me energy and meaningful start every day. 
-And I won't give up <img alt="😜" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f61c.svg" title=":stuck_out_tongue_winking_eye:"> </img></p>
-<h2 id="comments-recommendation-and-revisions">Comments, recommendation and revisions</h2>
-<p>I would be happy if you give me any useful comments, recommendation or point out on my mistakes or code errors.</p>
+<h2 id="key-ideas">Key Ideas</h2>
+<p>Split business logic of the application from interface. </p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../mv_patterns.png"><img alt="Schema of WEB application" src="../mv_patterns.png" width="800"/></a></p>
+</figure>
+<p><em>Business</em> <em>logic</em> is the core functionality that solves specific business problem (
+for example, user registration, payments, add item to the basket, blog post creation, etc.)
+It is an algorithm of process that we want to implement to transform data somehow in order
+to provide a service (solve business problem). Sometimes it is called "use case". </p>
+<p><em>Interface</em> is the graphical interface that user interacts with. Such as forms, buttons, etc.</p>
+<p><em>Controller</em> is an intermediary between the UI (View) and business logic (Model). It should be
+'thin', so it should not duplicate business logic or take any part of it, only some 'light' features,
+such as values validation. </p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -726,13 +689,26 @@ And I won't give up <img alt="😜" class="twemoji" src="https://twemoji.maxcdn.
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Next: Projects" class="md-footer__link md-footer__link--next" href="projects/" rel="next">
+<a aria-label="Previous: Software Architecture" class="md-footer__link md-footer__link--prev" href="../../" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Software Architecture
+            </div>
+</div>
+</a>
+<a aria-label="Next: Frontend" class="md-footer__link md-footer__link--next" href="../../../frontend/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Projects
+              Frontend
             </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -765,9 +741,9 @@ And I won't give up <img alt="😜" class="twemoji" src="https://twemoji.maxcdn.
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.top", "navigation.prune", "navigation.indexes", "navigation.sections", "content.code.annotate", "search.suggest", "search.highlight", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script src="javascripts/mathjax.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.prune", "navigation.indexes", "navigation.sections", "content.code.annotate", "search.suggest", "search.highlight", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
