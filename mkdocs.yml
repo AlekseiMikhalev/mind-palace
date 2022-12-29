@@ -5,19 +5,58 @@ site_url: ""
 repo_url: https://github.com/AlekseiMikhalev/mind-palace
 nav:
   - Introduction: index.md
-  - Projects: projects/index.md
-  - Frontend: 
+  - Projects:
+      - projects/index.md
+      - Book Summarizer:
+          - projects/book_summarizer/index.md
+      - Age Classification:
+          - projects/age_classification/index.md
+  - Software Architecture:
+      - software_architecture/index.md
+      - Architectural Patterns:
+          - software_architecture/architectural_patterns/mv_patterns.md
+      - Architectural Principles:
+          - software_architecture/clean_architecture.md
+  - Frontend:
       - frontend/index.md
       - Create a website:
-        - create_website.md
-  - Backend: 
+          - create_website.md
+  - Backend:
       - backend/index.md
-      - Create CRUD app:
-        - create_crud.md
-  - Machine Learning: 
+      - CI/CD Pipeline:
+          - ci_cd_pipeline.md
+      - Microservice:
+          - microservices.md
+      - API Gateway:
+          - gateway.md
+      - Data Center:
+          - data_centers.md
+      - Load Balancer:
+          - load_balancer.md
+      - Message Broker:
+          - message_broker.md
+      - Containers Orchestration:
+          - containers_orchestration.md
+      - Data Query and Manipulation:
+          - data_query.md
+      - Database:
+          - database.md
+      - Storage for Large Files:
+          - storage.md
+      - Cache:
+          - cache.md
+      - Text Search:
+          - text_search.md
+      - Analytics:
+          - analytics.md
+      - Scheduller:
+          - scheduller.md
+      - Big Data:
+          - big_data.md
+  - Machine Learning:
       - machine_learning/index.md
-  - Software Architecture: 
-      - software_architecture/index.md
+      - NLP:
+          - machine_learning/nlp.md
 
 plugins:
   - section-index
@@ -107,3 +146,9 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
