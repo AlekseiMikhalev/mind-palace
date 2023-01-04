@@ -1,0 +1,998 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="My personal mind palace that summarizes my knowledge" name="description"/>
+<meta content="Aleksei Mikhalev" name="author"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Text Classification - Developer Mind Palace</title>
+<link href="../../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#text-classification">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Developer Mind Palace" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Developer Mind Palace">
+<img alt="logo" src="../../../assets/images/logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Developer Mind Palace
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Text Classification
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme)" data-md-color-primary="" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_3" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+<input aria-label="Switch to system preference" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="" data-md-color-scheme="slate" id="__palette_3" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to system preference">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/AlekseiMikhalev/mind-palace" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Developer Mind Palace" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Developer Mind Palace">
+<img alt="logo" src="../../../assets/images/logo.png"/>
+</a>
+    Developer Mind Palace
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/AlekseiMikhalev/mind-palace" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../projects/">Projects</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Projects" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Projects
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/book_summarizer/">
+        Book Summarizer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../projects/age_classification/">
+        Age Classification
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../software_architecture/">Software Architecture</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Software Architecture" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Software Architecture
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../software_architecture/architectural_patterns/mv_patterns/">
+        Architectural Patterns
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
+          Architectural Principles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Architectural Principles" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Architectural Principles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../software_architecture/clean_architecture.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../frontend/">Frontend</a>
+<label for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Frontend" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Frontend
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" id="__nav_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_1">
+          Create a website
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create a website" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
+          Create a website
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../create_website.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../backend/">Backend</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Backend" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Backend
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../backend/design_patterns/">
+        Design Patterns
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          CI/CD Pipeline
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CI/CD Pipeline" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          CI/CD Pipeline
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ci_cd_pipeline.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
+          Microservice
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Microservice" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Microservice
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../microservices.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" id="__nav_5_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4">
+          API Gateway
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="API Gateway" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+          API Gateway
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../gateway.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" id="__nav_5_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_5">
+          Data Center
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Data Center" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_5">
+<span class="md-nav__icon md-icon"></span>
+          Data Center
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../data_centers.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
+          Load Balancer
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Load Balancer" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+          Load Balancer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../load_balancer.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
+          Message Broker
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Message Broker" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+          Message Broker
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../message_broker.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
+          Containers Orchestration
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Containers Orchestration" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+          Containers Orchestration
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../containers_orchestration.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
+          Data Query and Manipulation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Data Query and Manipulation" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+          Data Query and Manipulation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../data_query.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Database" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../database.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
+          Storage for Large Files
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Storage for Large Files" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+          Storage for Large Files
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../storage.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_12">
+          Cache
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Cache" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+          Cache
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cache.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_13" id="__nav_5_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_13">
+          Text Search
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Text Search" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_13">
+<span class="md-nav__icon md-icon"></span>
+          Text Search
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../text_search.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_14" id="__nav_5_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_14">
+          Analytics
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Analytics" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_14">
+<span class="md-nav__icon md-icon"></span>
+          Analytics
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analytics.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_15" id="__nav_5_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_15">
+          Scheduller
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scheduller" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_15">
+<span class="md-nav__icon md-icon"></span>
+          Scheduller
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../scheduller.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_16" id="__nav_5_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_16">
+          Big Data
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Big Data" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_16">
+<span class="md-nav__icon md-icon"></span>
+          Big Data
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../big_data.md">
+        None
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../">Machine Learning</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Machine Learning" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Machine Learning
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" id="__nav_6_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">NLP</a>
+<label for="__nav_6_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="NLP" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_1">
+<span class="md-nav__icon md-icon"></span>
+          NLP
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Text Classification
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Text Classification
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#understanding-the-purpose-of-the-project">
+    Understanding the Purpose of the Project
+  </a>
+<nav aria-label="Understanding the Purpose of the Project" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#questions-to-think-about">
+    Questions to think about
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#suggested-pipeline-of-the-project">
+    Suggested pipeline of the project
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../information_search/">
+        Information Search
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#understanding-the-purpose-of-the-project">
+    Understanding the Purpose of the Project
+  </a>
+<nav aria-label="Understanding the Purpose of the Project" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#questions-to-think-about">
+    Questions to think about
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#suggested-pipeline-of-the-project">
+    Suggested pipeline of the project
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/machine_learning/nlp/text_classification.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
+</a>
+<h1 id="text-classification">Text Classification</h1>
+<p>In this section the knowledge about text classification is summarized based on the <em>spam filtering project</em> example.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Classification</strong> refers to the process of identifying which category or class among the set of categories (classes) an observation belongs to based on its properties. In machine learning, such properties are called <em>features</em> and the class names are called <em>class labels</em>. If you classify observations into two classes, you are dealing with <em>binary</em> <em>classification</em>; tasks with more than two classes are examples of <em>multi-class classification</em>.</p>
+</div>
+<h2 id="understanding-the-purpose-of-the-project">Understanding the Purpose of the Project</h2>
+<p><strong>Provided by client</strong>: dataset of spam and normal emails from the past.</p>
+<p><strong>Task</strong>: build a spam filter which can predict if any future incoming email is spam or not.</p>
+<h3 id="questions-to-think-about">Questions to think about</h3>
+<ul>
+<li>What is the format of provided data?</li>
+<li>How to use provided data?</li>
+<li>What features of the emails might be useful, how to extract them?</li>
+<li>What are sequence of steps in the application?</li>
+</ul>
+<h3 id="suggested-pipeline-of-the-project">Suggested pipeline of the project</h3>
+<ol>
+<li>Define classes</li>
+<li>Split text of each email into words</li>
+<li>Extract useful features</li>
+<li>Train a classifier</li>
+<li>Test and evaluate</li>
+</ol>
+<p><strong>1. Define classes</strong>
+Define the label of each class and which data represents which class.</p>
+<p><strong>2. Split into words</strong>
+Preprocess the raw text from email in order to prepare it for machine learning classifier. Split text into words by whitespaces and punctuation:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>    <span class="n">text</span> <span class="o">=</span> <span class="s1">'Define which data represents "ham" class and which data represents "spam" class for the machine learning algorithm.'</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">delimiters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'"'</span><span class="p">,</span> <span class="s2">"."</span><span class="p">]</span> <span class="c1">#(1)</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">current_word</span> <span class="o">=</span> <span class="s2">""</span> <span class="c1">#(2)</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s2">" "</span><span class="p">:</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">current_word</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_word</span><span class="p">)</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>                <span class="n">current_word</span> <span class="o">=</span> <span class="s2">""</span> <span class="c1">#(3)</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">delimiters</span><span class="p">:</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>            <span class="k">if</span> <span class="n">current_word</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span> <span class="c1">#(4)</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>            <span class="k">else</span><span class="p">:</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_word</span><span class="p">)</span>
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>                <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>                <span class="n">current_word</span> <span class="o">=</span> <span class="s2">""</span> <span class="c1">#(5)</span>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>        <span class="k">else</span><span class="p">:</span>
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>            <span class="n">current_word</span> <span class="o">+=</span> <span class="n">char</span> <span class="c1">#(6)</span>
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>initialize list of delimiters</li>
+<li>the <strong>current_word</strong> variable keeps track of the word currently being processed.</li>
+<li>check if the character is a whitespace and the current_word is not empty</li>
+<li>check if the character is one of the punctuation marks and there is nothing stored in the current_word yet</li>
+<li>check if the character is one of the punctuation marks and there is information stored in <strong>current_word</strong></li>
+<li>check if the character is any other letter; that is, not specified as a delimiter and not a whitespace</li>
+</ol>
+<p>To solve the problem with cases like <em>U.S.A.</em> and <em>U.K.</em> which under the above preprocessor are splitted into ['U', '.', 'S', '.', 'A', '.'] and ['U', '.', 'K', '.'], we can use tokenizer.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Tokenization</strong> is the process of word token identification or extraction from the running text. It is often the first step in text preprocessing. Whitespaces and punctuation marks often serve as reliable word separators; however, simple approaches are likely
+to run into exceptions like “U.S.A.” and similar. Tokenizers are NLP tools that are highly optimized for the task of word tokenization, and they may rely on carefully
+crafted regular expressions or may be trained using machine-learning algorithms.</p>
+</div>
+<p><strong>3. Extract and normalize features</strong>
+Put all words to lowercase.</p>
+<p><strong>4. Train a classifier</strong>
+Choose machine learning model and train it on the preprocessed data. Split dataset into <em>train</em> and <em>test</em> before training (typically 80% for training, and 20% for testing).</p>
+<p><em>Naïve Bayes</em> - probabilistic classifier, it makes class prediction based on the estimation which outcome is most likely. The probability in this case is <em>conditional</em>, because it depends on condition (words as features). 
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>If P(spam | content) = 0.58 and P(ham | content) = 0.42, predict spam
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>If P(spam | content) = 0.37 and P(ham | content) = 0.63, predict ham
+</code></pre></div>
+<strong><em>How it works on practice</em></strong>
+Estimate the probability that an email is spam or ham based on its content, taking the number of times this content lead to a particular outcome:</p>
+<div class="arithmatex">\[
+\operatorname{P}(spam\ |{'Participate\ in\ our\ lottery!'}) = \frac{num(spam\ emails\ with\ 'Participate\ in\ our\ lottery!')}{num(all\ email\ with\ 'Participate\ in\ our\ lottery!')}
+\]</div>
+<p>In general the formula looks like this:</p>
+<div class="arithmatex">\[
+\operatorname{P}(outcome\ |{condition}) = \frac{num\ of\ times(condition\ led\ to\ outcome)}{num\ of\ times(condition\ applied)}
+\]</div>
+<p>The problem here is that we are estimating of particular combination of words (as features), but it may not be many times when we meet exactly the same combination. Therefore, we may not generalise the classifier efficiently. 
+The solution is to split the estimation into smaller bits and establish the link between individual features.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/classifier.png"><img alt="classifier" src="../images/classifier.png" width="800"/></a></p>
+</figure>
+<p>Estimate probability by using two formulas:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Schema</label><label for="__tabbed_1_2">Math</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/conditional_probabilities.png"><img alt="conditional probabilities" src="../images/conditional_probabilities.png" width="800"/></a>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<p><strong>Formula 1</strong>. Proportion of times we've seen 'Participate in our lottery!' in a spam email among all emails with this content.</p>
+<div class="arithmatex">\[
+\operatorname{P}(spam\ |{'Participate\ in\ our\ lottery!'}) = \frac{P('Participate\ in\ our\ lottery!'\ is\ in\ spam\ email)}{P('Participate\ in\ our\ lottery!'\ is\ used\ in\ an\ email)}
+\]</div>
+<p><strong>Formula 2</strong>. Proportion of times we've seen 'Participate in our lottery!' in a spam email among all spam emails.</p>
+<div class="arithmatex">\[
+\operatorname{P}({'Participate\ in\ our\ lottery!'|spam}) = \frac{P('Participate\ in\ our\ lottery!'\ is\ in\ spam\ email)}{P(an\ email\ is\ spam)}
+\]</div>
+<p><strong>General formula (combination of the two previous ones)</strong>:</p>
+<div class="arithmatex">\[
+\operatorname{P}({class|content}) = \frac{P(content\ in\ class)}{P(content)} = \frac{P(content|class)\times P(class)}{P(content)}
+\]</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><em>P(class)</em> - probability of each class, i.e. distribution of the class in the dataset. This forms prior probability for the classifier. If the dataset is unbalanced, potential probability is inclined respectively. </p>
+<p><em>P(content|class)</em> - likelihood that we see this particular content given that the email is spam or ham. </p>
+</div>
+</div>
+</div>
+</input></input></div>
+<p>Naïve Bayes assumes that the features are independent of each other, i.e. chances of seeing a word 'lottery' in an email are independent of seeing a word 'new' or any other word. Therefore we can estimate the probability of the whole sequence of features by product of probabilities of each feature in this class: </p>
+<div class="arithmatex">\[
+\operatorname{P}({['participate': True,\ 'in': True,\ ...,\ '!': True]|spam}) = {P('participate': True|spam)\times P('in': True|spam)\times ...\times P('!': True|spam)}
+\]</div>
+<p>And general formula is:</p>
+<div class="arithmatex">\[
+\operatorname{P}({[f_1, f_2, ..., f_n]|class}) = {P(f_1|class)\times P(f_2|class)\times ...\times P(f_n|class)}
+\]</div>
+<p><strong><em>How exactly classifier algorithm works</em></strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Training Phase</label><label for="__tabbed_2_2">Test Phase</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Learns prior probabilities
+This is simply initial class distribution. For example:<ul>
+<li>P(ham) = 0.71</li>
+<li>P(spam) = 0.29</li>
+</ul>
+</li>
+<li>Learns probabilities for each feature given in the classes. 
+This is the proportion of emails with each feature in each class. For example:<ul>
+<li>P ('meeting': True|ham) = 0.50</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Predict new email class based on the probabilities of each feature of the content:</p>
+<div class="arithmatex">\[
+\begin{align}
+    \begin{cases}
+    P(f_1|spam)\times ...\times P(f_n|spam)\times P(spam) \geq P(f_1|ham)\times ...\times P(f_n|ham)\times P(ham) \implies spam\\ 
+    otherwise \implies ham\
+    \end{cases}
+\end{align}
+\]</div>
+</div>
+</div>
+</input></input></div>
+<p><strong><em>Code implementation</em></strong>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>    <span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">NaiveBayesClassifier</span><span class="p">,</span> <span class="n">classify</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">proportion</span><span class="p">):</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">*</span> <span class="n">proportion</span><span class="p">)</span> <span class="c1">#(1)</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>        <span class="n">train_set</span> <span class="o">=</span> <span class="n">features</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="n">test_set</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>        <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"Training set size = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">))</span><span class="si">}</span><span class="s2"> emails"</span><span class="p">)</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>        <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"Test set size = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_set</span><span class="p">))</span><span class="si">}</span><span class="s2"> emails"</span><span class="p">)</span>
+<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>        <span class="n">classifier</span> <span class="o">=</span> <span class="n">NaiveBayesClassifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span> <span class="c1">#(2)</span>
+<a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a>        <span class="k">return</span> <span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">classifier</span>
+<a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">classifier</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">all_features</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span> <span class="c1">#(3)</span>
+</code></pre></div></p>
+<ol>
+<li>split dataset into train and test parts</li>
+<li>initialize a classifier</li>
+<li>apply the train function using 80% of dataset for training</li>
+</ol>
+<p><strong>5. Classifier evaluation</strong></p>
+<div class="arithmatex">\[
+\operatorname{Accuracy} = \frac{num(correct\ predictions)}{num(all\ test\ instances)}
+\]</div>
+<p><strong><em>Code implementation</em></strong></p>
+<p>Define an estimation function which estimates the accuracy of the classifier on each dataset
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">classifier</span><span class="p">):</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>        <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"Accuracy on the training set = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">classify</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">train_set</span><span class="p">))</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"Accuracy of the test set = </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">classify</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">test_set</span><span class="p">))</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="n">classifier</span><span class="o">.</span><span class="n">show_most_informative_features</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="c1">#(1)</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="n">evaluate</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">classifier</span><span class="p">)</span>
+</code></pre></div></p>
+<ol>
+<li>print top 50 most informative features (words). The words that are most strongly associated with a particular class. It is calculated as <span class="arithmatex">\(max[P(word: True | ham) / P(word: True | spam)]\)</span> for most predictive <em>ham</em> features, and <span class="arithmatex">\(max[P(word: True | spam) / P(word: True | ham)]\)</span> for most predictive <em>spam</em> features (check out <a href="https://www.nltk.org/api/nltk.classify.naivebayes.html">NLTK’s documentation</a> for more information).</li>
+</ol>
+<p><strong><em>Check the contexts of specific words</em></strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>    <span class="kn">from</span> <span class="nn">nltk.text</span> <span class="kn">import</span> <span class="n">Text</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="k">def</span> <span class="nf">concordance</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="n">search_word</span><span class="p">):</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>        <span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>        <span class="n">word_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">email</span><span class="o">.</span><span class="n">lower</span><span class="p">())]</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>        <span class="n">text_list</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>        <span class="k">if</span> <span class="n">search_word</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">:</span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>            <span class="n">text_list</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="n">search_word</span><span class="p">)</span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s2">"STOCKS in HAM:"</span><span class="p">)</span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="n">concordance</span><span class="p">(</span><span class="n">ham_list</span><span class="p">,</span> <span class="s1">'stocks'</span><span class="p">)</span>
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="nb">print</span> <span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">STOCKS in SPAM:"</span><span class="p">)</span>
+<a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="n">concordance</span><span class="p">(</span><span class="n">spam_list</span><span class="p">,</span> <span class="s1">'stocks'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>6. Use spam filter on new emails in practice</strong></p>
+<p>Here is the code for inference of the model on new emails.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>    <span class="n">test_spam_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Participate in our new lottery!"</span><span class="p">,</span> <span class="s2">"Try out this new medicine"</span><span class="p">]</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>    <span class="n">test_ham_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"See the minutes from the last meeting attached"</span><span class="p">,</span> <span class="s2">"Investors are coming to our office on Monday"</span><span class="p">]</span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="n">test_emails</span> <span class="o">=</span> <span class="p">[(</span><span class="n">email_content</span><span class="p">,</span> <span class="s2">"spam"</span><span class="p">)</span> <span class="k">for</span> <span class="n">email_content</span> <span class="ow">in</span> <span class="n">test_spam_list</span><span class="p">]</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="n">test_emails</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">email_content</span><span class="p">,</span> <span class="s2">"ham"</span><span class="p">)</span> <span class="k">for</span> <span class="n">email_content</span> <span class="ow">in</span> <span class="n">test_ham_list</span><span class="p">]</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="n">new_test_set</span> <span class="o">=</span> <span class="p">[(</span><span class="n">get_features</span><span class="p">(</span><span class="n">email</span><span class="p">),</span> <span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="n">test_emails</span><span class="p">]</span>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="n">evaluate</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">new_test_set</span><span class="p">,</span> <span class="n">classifier</span><span class="p">)</span>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="n">email</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Type in your email here (or press 'Enter'): "</span><span class="p">)</span>
+<a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+<a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a>        <span class="k">break</span>
+<a href="#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="k">else</span><span class="p">:</span>
+<a href="#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a>        <span class="n">prediction</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">get_features</span><span class="p">(</span><span class="n">email</span><span class="p">))</span>
+<a href="#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a>        <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"This email is likely </span><span class="si">{</span><span class="n">prediction</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: NLP" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              NLP
+            </div>
+</div>
+</a>
+<a aria-label="Next: Information Search" class="md-footer__link md-footer__link--next" href="../information_search/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Information Search
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/alekseimikhalev" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/in/aleksmihalev" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.prune", "navigation.indexes", "navigation.sections", "content.code.annotate", "search.suggest", "search.highlight", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

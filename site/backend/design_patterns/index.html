@@ -9,7 +9,7 @@
 <meta content="Aleksei Mikhalev" name="author"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>NLP - Developer Mind Palace</title>
+<title>Design Patterns - Developer Mind Palace</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -35,7 +35,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#natural-language-processing">
+<a class="md-skip" href="#programming-design-patterns-in-python">
           Skip to content
         </a>
 </div>
@@ -59,7 +59,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              NLP
+              Design Patterns
             
           </span>
 </div>
@@ -257,10 +257,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../../backend/">Backend</a>
+<a href="../">Backend</a>
 <label for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -271,10 +271,56 @@
           Backend
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../backend/design_patterns/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Design Patterns
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Design Patterns
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#profiling">
+    Profiling
+  </a>
+<nav aria-label="Profiling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#profiling-memory-usage">
+    Profiling memory usage
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optimizing-code">
+    Optimizing code
+  </a>
+<nav aria-label="Optimizing code" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-right-data-structures">
+    Using the right data structures
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-caching-and-memorization-to-improve-efficiency">
+    Using caching and memorization to improve efficiency
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
@@ -579,10 +625,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../">Machine Learning</a>
+<a href="../../machine_learning/">Machine Learning</a>
 <label for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -593,10 +639,10 @@
           Machine Learning
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" id="__nav_6_1" type="checkbox"/>
-<div class="md-nav__link md-nav__link--index md-nav__link--active">
-<a href="./">NLP</a>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" id="__nav_6_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../machine_learning/nlp/">NLP</a>
 <label for="__nav_6_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -608,12 +654,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="text_classification/">
+<a class="md-nav__link" href="../../machine_learning/nlp/text_classification/">
         Text Classification
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="information_search/">
+<a class="md-nav__link" href="../../machine_learning/nlp/information_search/">
         Information Search
       </a>
 </li>
@@ -638,19 +684,37 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#sources-overview">
-    Sources Overview
+<a class="md-nav__link" href="#profiling">
+    Profiling
+  </a>
+<nav aria-label="Profiling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#profiling-memory-usage">
+    Profiling memory usage
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optimizing-code">
+    Optimizing code
+  </a>
+<nav aria-label="Optimizing code" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-right-data-structures">
+    Using the right data structures
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#sample-use-cases">
-    Sample Use Cases
+<a class="md-nav__link" href="#using-caching-and-memorization-to-improve-efficiency">
+    Using caching and memorization to improve efficiency
   </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#basics">
-    Basics
-  </a>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -659,62 +723,179 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/machine_learning/nlp/index.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/backend/design_patterns.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="natural-language-processing">Natural Language Processing</h1>
-<h2 id="sources-overview">Sources Overview</h2>
+<h1 id="programming-design-patterns-in-python">Programming Design Patterns in Python</h1>
+<h2 id="profiling">Profiling</h2>
+<p><a href="https://docs.python.org/3/library/profile.html">Profilers in Python</a></p>
+<p><em>Profiling</em> - technique that allows to pinpoint the most resource-intensive parts of an application.</p>
+<p><em>Profiler</em> - program that runs an aplication and monitors how long each function takes to execute, so it detects the functions on which our application spends of its time. </p>
+<p><code>pytest-benchmark</code> is used for testing running time of specific functions. See <a href="https://pytest-benchmark.readthedocs.io/en/stable/usage.html">documentation</a> of pytest-benchmark for details.</p>
+<p>Another profiling tool is <code>cProfile</code>.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>    <span class="kn">from</span> <span class="nn">simul</span> <span class="kn">import</span> <span class="n">benchmark</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="kn">import</span> <span class="nn">cProfile</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">pr</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="n">pr</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">benchmark</span><span class="p">()</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="n">pr</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="n">pr</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+</code></pre></div>
+<p><em>KCachegrind</em> - graphical user interface visualizing profiling output. </p>
+<p>How to do profiling:</p>
+<ol>
+<li>Check modules of the app with cProfile or other profiler in order to understand which module is time-consuming</li>
+<li>Use <code>line_profiler</code> to check functions line by line. See the <a href="https://github.com/rkern/line_profiler">documentation</a></li>
+</ol>
+<h3 id="profiling-memory-usage">Profiling memory usage</h3>
+<p>Memory profiler summarizes the information of memory usage of process. </p>
+<h2 id="optimizing-code">Optimizing code</h2>
+<p>Methods of optimzation:</p>
 <ul>
-<li>Books:<ul>
-<li><a href="https://www.amazon.com/Getting-Started-Natural-Language-Processing/dp/1617296767">Ekaterina Kochmar - Getting Started with Natural Language Processing-Manning (2022)</a></li>
+<li>improve algorithms used</li>
+<li>minimize the number of instructions</li>
 </ul>
-</li>
-</ul>
-<h2 id="sample-use-cases">Sample Use Cases</h2>
-<ul>
-<li>Information search</li>
-<li>Information retrieval</li>
-</ul>
-<h2 id="basics">Basics</h2>
-<p>In NLP important concept is a vector. Characters can be represented as vectors, words, or documents can be represented as vectors. </p>
-<p>For example, two documents can be represented as vectors based on the number of occurences of specific words.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Schema</label><label for="__tabbed_1_2">Python Implementation</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><figure markdown="">
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/vectors.png"><img alt="Documents vectors" src="images/vectors.png" width="800"/></a>
+<h3 id="using-the-right-data-structures">Using the right data structures</h3>
+<p>Estimation time of operations per data sctructure:</p>
+<p><strong><em>list of 10,000 size</em></strong></p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/lists.png"><img alt="lists" src="../images/lists.png" width="800"/></a></p>
+</figure>
+<p><strong><em>deque (double-ended queue) of 10,000 size</em></strong></p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/deque1.png"><img alt="deque" src="../images/deque1.png" width="800"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/deque2.png"><img alt="deque" src="../images/deque2.png" width="800"/></a></p>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A simple way to speed up searches in lists is to keep the array sorted and perform a binary search using the <code>bisect</code> <a href="https://docs.python.org/3.10/library/bisect.html">module</a>. <code>bisect</code> allows fast search on sorted arrays. 
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>    <span class="n">insert</span> <span class="n">bisect</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="n">collection</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="n">bisect</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="c1"># Result: 2</span>
+</code></pre></div>
+This function uses the binary search algorithm that has <span class="arithmatex">\(O(log(N))\)</span> running time.</p>
+<p>The efficiency of the <code>bisect</code> function:
+<figure markdown="">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/bisect.png"><img alt="deque" src="../images/bisect.png" width="800"/></a>
 </figure></p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">doc1</span> <span class="o">=</span> <span class="s2">"meeting ... management ... meeting ... management ... meeting"</span> <span class="c1"># (1) </span>
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">doc1</span> <span class="o">+=</span> <span class="s2">"... management ... meeting ... meeting"</span> 
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">vector</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># (2)</span>
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc1</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">):</span>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s2">"management"</span><span class="p">:</span>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># (3)</span>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s2">"meeting"</span><span class="p">:</span>
-<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># (4)</span>
-<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="c1"># (5)</span>
+<p><strong><em>dictionaries</em></strong></p>
+<p>The efficiency of the <code>Counter</code> function:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/counter.png"><img alt="deque" src="../images/counter.png" width="800"/></a></p>
+</figure>
+<p>Building an in-memory search index using a hash map</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>    <span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"the cat is under the table"</span><span class="p">,</span> <span class="s2">"the dog is under the table"</span><span class="p">,</span> <span class="s2">"cats and dogs smell roses"</span><span class="p">,</span> <span class="s2">"Carla eats an apple"</span><span class="p">]</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="n">index</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#(1)</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">docs</span><span class="p">):</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">():</span> <span class="c1">#(2)</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>            <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span> <span class="c1">#(3)</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>                <span class="n">index</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>            <span class="k">else</span><span class="p">:</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>                <span class="n">index</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 <ol>
-<li>represents a document based on keywords only</li>
-<li>initializes array vector</li>
-<li>count for "management" is incremented in cell 0</li>
-<li>count for "meeting" is incremented in cell 1.</li>
-<li>[3, 5]</li>
+<li>Building an index</li>
+<li>We iterate over each term in the document</li>
+<li>We build a list containing the indices where the term appears</li>
 </ol>
-</div>
-</div>
-</input></input></div>
-</div>
-<p>Two vectors can be compared between each other by either length or by measuring angle between them. </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p><strong>Cosine similarity</strong> estimates the similarity between two nonzero vectors in space (or two texts represented by such vectors) on the basis of the angle between these vectors — for example, the cosine of 0° equals 1, which denotes the maximum similarity, and the cosine of 180° equals –1, which is the lowest value. Unlike Euclidean
-distance, this measure is not affected by vector length.</p>
-</div>
+<p>Now if we want to do search (for example we want to retrieve all documents contain the <code>table</code> term), we can easily use it to query the index:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="s2">"table"</span><span class="p">]</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">result_documents</span> <span class="o">=</span> <span class="p">[</span><span class="n">docs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+</code></pre></div>
+<p>And it takes us <span class="arithmatex">\(O(1)\)</span> time complexity. So we can query any number of documents in constant time. </p>
+<p><strong><em>sets</em></strong></p>
+<p>Unordered collections of unique elements.</p>
+<p>Time complexity of <em>union</em>, <em>intersection</em> and <em>difference</em> operations of two sets.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/sets1.png"><img alt="deque" src="../images/sets1.png" width="400"/></a></p>
+</figure>
+<p>Application of sets in practice: boolean search - for example, query all documents contain multiple terms. For example, we may want to search for all the documents that contain the words <em>cat</em> and <em>table</em>. This kind of query can be efficiently computed by taking the intersection between the set of documents containing cat and the set of documents containing table.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>    <span class="n">index</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#(1)</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">docs</span><span class="p">):</span>  
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">():</span> <span class="c1">#(2) </span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>            <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>                <span class="n">index</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">}</span> <span class="c1">#(3)</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>            <span class="k">else</span><span class="p">:</span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>                <span class="n">index</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="n">index</span><span class="p">[</span><span class="s1">'cat'</span><span class="p">]</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="s1">'table'</span><span class="p">])</span> <span class="c1">#(4) </span>
+</code></pre></div>
+<ol>
+<li>Building an index using sets</li>
+<li>We iterate over each term in the document</li>
+<li>We build a set containing the indices where the term appears</li>
+<li>Querying the documents containing both "cat" and "table"</li>
+</ol>
+<p><strong><em>heaps</em></strong></p>
+<p>Heaps are data structures designed to quickly fin and extract the maximum (or minimum) value in a collection. </p>
+<p>Application of heaps in practice: process of incoming tasks in order of maximum priority. Insertion or extraction of maximum value takes <span class="arithmatex">\(O(log(N))\)</span> time complexity.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>    <span class="kn">import</span> <span class="nn">heapq</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="n">collection</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span> <span class="c1">#(1)</span>
+</code></pre></div>
+<ol>
+<li>extract the minimum value, returns: 3</li>
+</ol>
+<p>Another example of performing insertion and extraction</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>    <span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">PriorityQueue</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="n">queue</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">collection</span><span class="p">:</span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="c1">#(1)</span>
+</code></pre></div>
+<ol>
+<li>returns: 3</li>
+</ol>
+<p>If the maximum element is required we can just multiply each element of the list by -1, i.e. invert the order of elements. </p>
+<p>If it is needed to associate an object (for example, task) with each number (and make priority order) we can insert tuples <code>(number, object)</code>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>    <span class="n">queue</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"priority 3"</span><span class="p">))</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"priority 2"</span><span class="p">))</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"priority 1"</span><span class="p">))</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a>    <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="c1">#(1)</span>
+</code></pre></div>
+<ol>
+<li>returns: (1, "priority 1")</li>
+</ol>
+<p><strong><em>tries</em></strong></p>
+<p>Tries are extremely fast at matching a list of strings against a prefix. This is especially useful when implementing features such as <em>search as you type</em> and <em>autocompletion</em>, where the list of available completions is very large and short response
+times are required.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>    <span class="kn">from</span> <span class="nn">patricia</span> <span class="kn">import</span> <span class="n">trie</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>    <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>    <span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">ascii_uppercase</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a>    <span class="k">def</span> <span class="nf">random_string</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a>        <span class="sd">"""Produce a random string made of *length* uppercase \</span>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="sd">        ascii characters"""</span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a>        <span class="k">return</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">choice</span><span class="p">(</span><span class="n">ascii_uppercase</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> \
+<a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a>        <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">))</span>
+<a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a>    <span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">random_string</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">)]</span>
+<a href="#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a href="#__codelineno-8-13" id="__codelineno-8-13" name="__codelineno-8-13"></a>    <span class="n">strings_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span><span class="mi">0</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">}</span> <span class="c1">#(1)</span>
+<a href="#__codelineno-8-14" id="__codelineno-8-14" name="__codelineno-8-14"></a>    <span class="n">strings_trie</span> <span class="o">=</span> <span class="n">trie</span><span class="p">(</span><span class="o">**</span><span class="n">strings_dict</span><span class="p">)</span>
+<a href="#__codelineno-8-15" id="__codelineno-8-15" name="__codelineno-8-15"></a>
+<a href="#__codelineno-8-16" id="__codelineno-8-16" name="__codelineno-8-16"></a>    <span class="n">matches</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">strings_trie</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">'AA'</span><span class="p">))</span>
+</code></pre></div>
+<ol>
+<li>a dictionary where all values are 0</li>
+</ol>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/tries.png"><img alt="deque" src="../images/tries.png" width="600"/></a></p>
+</figure>
+<h3 id="using-caching-and-memorization-to-improve-efficiency">Using caching and memorization to improve efficiency</h3>
+<p>The idea behind caching is to store expensive results in a temporary location (<strong>cache</strong>) that can be located in memory, on disk, or in a remote location. </p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -726,7 +907,7 @@ distance, this measure is not affected by vector length.</p>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Machine Learning" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
+<a aria-label="Previous: Backend" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -735,17 +916,17 @@ distance, this measure is not affected by vector length.</p>
 <span class="md-footer__direction">
                 Previous
               </span>
-              Machine Learning
+              Backend
             </div>
 </div>
 </a>
-<a aria-label="Next: Text Classification" class="md-footer__link md-footer__link--next" href="text_classification/" rel="next">
+<a aria-label="Next: Machine Learning" class="md-footer__link md-footer__link--next" href="../../machine_learning/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Text Classification
+              Machine Learning
             </div>
 </div>
 <div class="md-footer__button md-icon">
