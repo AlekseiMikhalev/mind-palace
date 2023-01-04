@@ -23,6 +23,8 @@ nav:
           - create_website.md
   - Backend:
       - backend/index.md
+      - Design Patterns:
+          - backend/design_patterns.md
       - CI/CD Pipeline:
           - ci_cd_pipeline.md
       - Microservice:
@@ -56,7 +58,9 @@ nav:
   - Machine Learning:
       - machine_learning/index.md
       - NLP:
-          - machine_learning/nlp.md
+          - machine_learning/nlp/index.md
+          - Text Classification: machine_learning/nlp/text_classification.md
+          - Information Search: machine_learning/nlp/information_search.md
 
 plugins:
   - section-index
@@ -75,7 +79,6 @@ theme:
     - content.code.annotate
     - search.suggest
     - search.highlight
-    - content.code.annotate
     - content.tabs.link
     - content.tooltips
   palette:
@@ -119,9 +122,9 @@ markdown_extensions:
   - abbr
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - attr_list
   - md_in_html
+  - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
