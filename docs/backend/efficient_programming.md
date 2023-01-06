@@ -1,4 +1,10 @@
-# Programming Design Patterns in Python
+# Efficient Programming in Python
+
+**Sources**: 
+
+- Books: 
+
+    - [Advanced Python Programming](https://www.packtpub.com/product/advanced-python-programming/9781838551216?utm_source=github&utm_medium=repository&utm_campaign=)
 
 ## Profiling
 
@@ -215,6 +221,197 @@ times are required.
 ![deque](images/tries.png){ width="600" }
 </figure>
 
-### Using caching and memorization to improve efficiency
+### Algorithmic optimization
+#### Using caching and memorization to improve efficiency
 
 The idea behind caching is to store expensive results in a temporary location (**cache**) that can be located in memory, on disk, or in a remote location. 
+
+The cache functions are located inside `functools` python module. See [documentation](https://docs.python.org/3/library/functools.html)
+
+Example of `lru_cache()` function:
+
+```python
+    from functools import lru_cache
+    
+    @lru_cache()
+    def sum2(a, b):
+        print("Calculating {} + {}".format(a, b))
+        return a + b
+
+    print(sum2(1, 2)) #(1)
+    print(sum2(1, 2)) #(2)
+```
+
+1.  Output: 
+        # Calculating 1 + 2
+        # 3
+2.  Second time function is not called again. Result was cached.
+    Output:
+        # 3
+
+We can restrict max size of cache by `@lru_cache(max_size=16)`. In this case new values will replace old ones based on strategy _least recently used_. 
+
+Other third-party module which allows to implement cache is [Joblib](https://joblib.readthedocs.io/en/latest/)  
+Basically it works same as `lru_cache()` but the results will be stored on disk in the directory specified by the `cachedir` argument:
+
+```python
+    from joblib import Memory
+
+    memory = Memory(cachedir='/path/to/cachedir')
+
+    @memory.cache
+    def sum2(a, b):
+        return a + b
+```
+
+#### Using iteration with comprehensions and generators
+
+To speed up looping we can use _comprehensions_ and _generators_. 
+Time comparison:
+
+```python
+    def loop():
+        res = []
+        for i in range(100000):
+            res.append(i * i)
+        return sum(res)
+    
+    def dict_loop():
+        res = {}
+        for i in range(100000):
+            res[i] = i
+        return res
+
+    def comprehension():
+        return sum([i * i for i in range(100000)])
+
+    def generator():
+        return sum(i * i for i in range(100000))
+
+    def dict_comprehension():
+        return {i: i for i in range(100000)}
+
+    %timeit loop()
+    100 loops, best of 3: 16.1 ms per loop
+
+    %timeit comprehension()
+    100 loops, best of 3: 10.1 ms per loop
+
+    %timeit generator()
+    100 loops, best of 3: 12.4 ms per loop
+
+    %timeit dict_loop()
+    100 loops, best of 3: 13.2 ms per loop
+
+    %timeit dict_comprehension()
+    100 loops, best of 3: 12.8 ms per loop
+```
+
+Example of efficient looping using `filter` and `map` functions in combination with generators:
+
+```python
+    def map_comprehension(numbers):
+        a = [n * 2 for n in numbers]
+        b = [n ** 2 for n in a]
+        c = [n ** 0.33 for n in b]
+        return max(c)
+```
+
+The problem here is that for every list comprehension we are allocating a new list, which increases memory usage. We can solve it by implementing generators:
+
+```python
+    def map_normal(numbers):
+        a = map(lambda n: n * 2, numbers)
+        b = map(lambda n: n ** 2, a)
+        c = map(lambda n: n ** 0.33, b)
+        return max(c)
+
+    %load_ext memory_profiler
+    numbers = range(1000000)
+
+    %memit map_comprehension(numbers)
+    peak memory: 166.33 MiB, increment: 102.54 MiB
+
+    %memit map_normal(numbers)
+    peak memory: 71.04 MiB, increment: 0.00 MiB
+```
+
+More about [generators](https://realpython.com/introduction-to-python-generators/)
+
+#### Using Numpy for high-speed calculations on big arrays
+
+Numpy allows to manipulate multidimensional numerical data and perform mathematical computations that are highly optimized.
+
+#### Using Pandas with database-style data
+
+Pandas allows to work with labeled, categorical data (a.k.a dictionaries in Python)
+
+Create `pd.Series` object:
+
+```python
+    import pandas as pd
+
+    patients = [0, 1, 2, 3]
+    effective = [True, True, False, False]
+    effective_series = pd.Series(effective, index=patients)
+```
+
+In pandas keys are not limited to integers compared to numpy:
+
+```python
+    patients = ["a", "b", "c", "d"]
+    effective = [True, True, False, False]
+    effective_series = pd.Series(effective, index=patients)
+```
+
+We can create a dataframe to hold key-value data:
+
+```python
+    patients = ["a", "b", "c", "d"]
+    columns = {
+        "systolic_blood_pressure_initial": [120, 126, 130, 115],
+        "diastolic_blood_pressure_initial": [75, 85, 90, 87],
+        "systolic_blood_pressure_final": [115, 123, 130, 118],
+        "diastolic_blood_pressure_final": [70, 82, 92, 87]
+    }
+    df = pd.DataFrame(columns, index=patients)
+```
+
+Indexing Series and DataFrame objects:
+
+1. Using _key_ of the element
+
+```python
+    effective_series.loc["a"]
+```
+
+2. Using _position_ of the element
+
+```python
+    effective_series.iloc[0]
+```
+
+3. Using _position_ of the element
+
+```python
+    effective_series.iloc[0]
+```
+
+Also pandas supports such useful operations as `join` for filtering data and extracting specific rows. 
+
+#### Using xarray 
+
+Xarray combines best from Numpy and Pandas - working with labeled multidimensional data. For details see the [xarray-documentation](https://docs.xarray.dev/en/stable/getting-started-guide/installing.html)
+
+Example: 
+
+```python
+    import xarray as xr
+    
+    ds = xr.Dataset.from_dataframe(df)
+```
+
+#### Using Cython to increase performance
+
+Use [documentation](https://cython.readthedocs.io/en/latest/) for detailed overview of its functionality
+

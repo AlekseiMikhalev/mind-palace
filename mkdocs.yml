@@ -23,8 +23,10 @@ nav:
           - create_website.md
   - Backend:
       - backend/index.md
-      - Design Patterns:
-          - backend/design_patterns.md
+      - Efficient Programming:
+          - backend/efficient_programming.md
+          - Concurrency and Parallelism:
+              - backend/concurrency_parallelism.md
       - CI/CD Pipeline:
           - ci_cd_pipeline.md
       - Microservice:
@@ -36,7 +38,7 @@ nav:
       - Load Balancer:
           - load_balancer.md
       - Message Broker:
-          - message_broker.md
+          - backend/message_broker.md
       - Containers Orchestration:
           - containers_orchestration.md
       - Data Query and Manipulation:
@@ -57,6 +59,8 @@ nav:
           - big_data.md
   - Machine Learning:
       - machine_learning/index.md
+      - Math:
+          - machine_learning/math.md
       - NLP:
           - machine_learning/nlp/index.md
           - Text Classification: machine_learning/nlp/text_classification.md
