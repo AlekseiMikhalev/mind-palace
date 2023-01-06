@@ -9,7 +9,7 @@
 <meta content="Aleksei Mikhalev" name="author"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Book Summarizer - Developer Mind Palace</title>
+<title>Message Broker - Developer Mind Palace</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -35,6 +35,9 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
+<a class="md-skip" href="#key-definitions">
+          Skip to content
+        </a>
 </div>
 <div data-md-component="announce">
 </div>
@@ -56,7 +59,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Book Summarizer
+              Message Broker
             
           </span>
 </div>
@@ -148,10 +151,10 @@
         Introduction
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../">Projects</a>
+<a href="../../projects/">Projects</a>
 <label for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -162,14 +165,13 @@
           Projects
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../projects/book_summarizer/">
         Book Summarizer
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../age_classification/">
+<a class="md-nav__link" href="../../projects/age_classification/">
         Age Classification
       </a>
 </li>
@@ -255,10 +257,10 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../../backend/">Backend</a>
+<a href="../">Backend</a>
 <label for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -272,7 +274,7 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" id="__nav_5_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../../backend/efficient_programming/">Efficient Programming</a>
+<a href="../efficient_programming/">Efficient Programming</a>
 <label for="__nav_5_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -284,7 +286,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../backend/concurrency_parallelism/">
+<a class="md-nav__link" href="../concurrency_parallelism/">
         Concurrency and Parallelism
       </a>
 </li>
@@ -391,10 +393,47 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../backend/message_broker/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Message Broker
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Message Broker
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-definitions">
+    Key Definitions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rabbitmq-features">
+    RabbitMQ features
+  </a>
+<nav aria-label="RabbitMQ features" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#message-queues-between-microservices">
+    Message queues between microservices
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#event-and-tasks">
+    Event and tasks
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
@@ -637,16 +676,126 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-definitions">
+    Key Definitions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rabbitmq-features">
+    RabbitMQ features
+  </a>
+<nav aria-label="RabbitMQ features" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#message-queues-between-microservices">
+    Message queues between microservices
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#event-and-tasks">
+    Event and tasks
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/projects/book_summarizer/index.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/AlekseiMikhalev/mind-palace/edit/master/docs/backend/message_broker.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1>Book Summarizer</h1>
+<h1>Message Broker</h1>
+<p>Source:</p>
+<ul>
+<li>
+<p>Books:</p>
+<ul>
+<li><a href="https://www.amazon.com.tr/RabbitMQ-Essentials-distributed-scalable-applications/dp/1789131669">David Dossot* Lovisa Johansson - RabbitMQ essentials * build distributed and scalable applications with message queuing using RabbitMQ (2020)</a></li>
+</ul>
+</li>
+<li>
+<p>RabbitMQ <a href="https://www.rabbitmq.com/">documentation</a></p>
+</li>
+</ul>
+<h2 id="key-definitions">Key Definitions</h2>
+<p><strong>Broker or message broker</strong> is a piece of software that receives messages
+from one application or service, and delivers them to another application,
+service, or broker.</p>
+<p><strong>Virtual host, vhost</strong> exists within the broker. It's a way to separate
+applications that are using the same RabbitMQ instance, similar to a logical
+container inside a broker; for example, separating working environments into
+development on one vhost and staging on another, keeping them within the same broker instead of setting up multiple brokers. Users, exchanges, queues, and so on are isolated on one specific vhost. A user connected to a particular vhost cannot access any resources (queue, exchange, and so on) from another vhost. Users can have different access privileges to different vhosts.</p>
+<p><strong>Connection</strong> is a physical network (TCP) connection between the application
+(publisher/consumer) and a broker. When the client disconnects or a system
+failure occurs, the connection is closed.</p>
+<p><strong>Channel</strong> is a virtual connection inside a connection. It reuses a connection, forgoing the need to reauthorize and open a new TCP stream. When messages are published or consumed, it is done over a channel. Many channels can be established within a single connection.</p>
+<p><strong>Exchange</strong> entity is in charge of applying routing rules for messages, making sure that messages are reaching their final destination. In other words, the exchange ensures that the received message ends up in the correct queues. Which queue the message ends up in depends on the rules defined by the exchange type. A queue needs to be bound to at least one exchange to be able to receive messages. Routing rules include direct (point-to-point), topic (publish-subscribe), fanout (multicast), and header exchanges.</p>
+<p><strong>Queue</strong> is a sequence of items; in this case, messages. The queue exists within the broker.</p>
+<p><strong>Binding</strong> is a virtual link between an exchange and a queue within the broker. It enables messages to flow from an exchange to a queue.</p>
+<p><strong>Messaging</strong> or <strong>message queuing</strong> is a method of communication between applications or components.</p>
+<p><strong>Messages</strong> are typically small requests, replies, status updates, or even just information.</p>
+<p>A <strong>message queue</strong> provides a temporary place for these messages to stay, allowing applications to send and receive them as necessary.</p>
+<p><strong>RabbitMQ</strong> is an open source message broker that acts as the intermediary or middleman for independent applications, giving them a common platform to communicate.</p>
+<p><strong>RabbitMQ</strong> mainly uses an Erlang-based implementation of the <strong>Advanced Message Queuing Protocol (AMQP)</strong>, which supports advanced features such as clustering and the complex routing of messages.</p>
+<p>Message queuing is a one-way communication style that provides asynchronous interaction between systems.
+Most common message exchange pattern is <strong>request-response</strong>. It is synchronous, so it follows tight-coupling between client and server and has deep impact on the architecture of the whole system (hard to evolve, scale and ship in independent releases). </p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker.png"><img alt="message-broker" src="../images/message_broker.png" width="500"/></a></p>
+</figure>
+<p><strong>Message-queuing exchange pattern</strong> is a one-way style of interaction where one system asynchronously interacts with another system via messages through a message broker. Requesting system doesn't wait for response, it continues processing no matter what.  </p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker1.png"><img alt="message-broker" src="../images/message_broker1.png" width="600"/></a></p>
+</figure>
+<p>Systems and applications play both the role of message publishers (producers) and message consumers (subscribers).
+Advantage of using this style of interaction is that systems become loosely coupled with each other. They do not need to know the location of other nodes on the network; a mere name is enough to reach them.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker2.png"><img alt="message-broker" src="../images/message_broker2.png" width="600"/></a></p>
+</figure>
+<p>The architecture represented via message queuing allows for the following:</p>
+<ul>
+<li>The publishers or consumers can be updated one by one, without them impacting each other.</li>
+<li>The performance of each side leaves the other side unaffected.</li>
+<li>The publishers or consumers are allowed to fail without impacting each other.</li>
+<li>The number of instances of publishers and consumers to scale and to accommodate their workload in complete independence.</li>
+<li>Technology mixing between consumer and publishers.</li>
+</ul>
+<p>Overview of concepts in AMQP:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker3.png"><img alt="message-broker" src="../images/message_broker3.png" width="800"/></a></p>
+</figure>
+<h2 id="rabbitmq-features">RabbitMQ features</h2>
+<p>RabbitMQ can be used as standalone instance or as a cluster on multiple servers</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker4.png"><img alt="message-broker" src="../images/message_broker4.png" width="500"/></a></p>
+</figure>
+<p>RabbitMQ brokers can be connected together using different techniques, such as federation and shovels, in order to form messaging topologies with smart message routing across brokers and the capacity to span multiple data centers.</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker5.png"><img alt="message-broker" src="../images/message_broker5.png" width="800"/></a></p>
+</figure>
+<h3 id="message-queues-between-microservices">Message queues between microservices</h3>
+<p>Message queues are often used in between microservices. Microservices are not strictly connected to each other. They instead use message queues to keep in touch. One service asynchronously pushes messages to a queue and those messages are delivered to the correct destination when the consumer is ready.</p>
+<p>For example, a webstore:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker6.png"><img alt="message-broker" src="../images/message_broker6.png" width="600"/></a></p>
+</figure>
+<h3 id="event-and-tasks">Event and tasks</h3>
+<p>Events are notifications that tell applications when something has happened. One
+application can subscribe to events from another application and respond by creating and handling tasks for themselves. A typical use case is when RabbitMQ acts as a task queue that handles <strong>slow</strong> operations.</p>
+<p>Messages are first entering the queue and then handled. New tasks are then added to another queue:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker7.png"><img alt="message-broker" src="../images/message_broker7.png" width="600"/></a></p>
+</figure>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -658,7 +807,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Projects" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
+<a aria-label="Previous: Concurrency and Parallelism" class="md-footer__link md-footer__link--prev" href="../concurrency_parallelism/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -667,17 +816,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              Projects
+              Concurrency and Parallelism
             </div>
 </div>
 </a>
-<a aria-label="Next: Age Classification" class="md-footer__link md-footer__link--next" href="../age_classification/" rel="next">
+<a aria-label="Next: Machine Learning" class="md-footer__link md-footer__link--next" href="../../machine_learning/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              Age Classification
+              Machine Learning
             </div>
 </div>
 <div class="md-footer__button md-icon">
