@@ -27,6 +27,10 @@ nav:
           - backend/efficient_programming.md
           - Concurrency and Parallelism:
               - backend/concurrency_parallelism.md
+          - OOP:
+              - backend/oop.md
+          - Testing:
+              - backend/testing.md
       - CI/CD Pipeline:
           - ci_cd_pipeline.md
       - Microservice:
@@ -65,6 +69,7 @@ nav:
           - machine_learning/nlp/index.md
           - Text Classification: machine_learning/nlp/text_classification.md
           - Information Search: machine_learning/nlp/information_search.md
+          - Statistical Analysis of Text: machine_learning/nlp/statistical_text_analysis.md
 
 plugins:
   - section-index
