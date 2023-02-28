@@ -290,6 +290,16 @@
         Concurrency and Parallelism
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../oop/">
+        OOP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../testing/">
+        Testing
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -427,6 +437,40 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#event-and-tasks">
     Event and tasks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-ubuntu">
+    Installation on Ubuntu
+  </a>
+<nav aria-label="Installation on Ubuntu" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rabbitmq-installation-on-docker">
+    RabbitMQ installation on Docker
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#starting-rabbitmq">
+    Starting RabbitMQ
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veryfying-that-rabbitmq-is-running">
+    Veryfying that RabbitMQ is running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installing-the-management-plugin-web-ui">
+    Installing the management plugin (Web UI)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-of-rabbitmq-usage-in-real-application">
+    Example of RabbitMQ usage in real application
   </a>
 </li>
 </ul>
@@ -652,13 +696,23 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../machine_learning/nlp/information_search/">
+        Information Search
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../machine_learning/nlp/statistical_text_analysis/">
+        Statistical Analysis of Text
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../machine_learning/nlp/text_classification/">
         Text Classification
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../machine_learning/nlp/information_search/">
-        Information Search
+<a class="md-nav__link" href="../../machine_learning/nlp/voice_cloning/">
+        Voice Cloning
       </a>
 </li>
 </ul>
@@ -702,6 +756,40 @@
     Event and tasks
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation-on-ubuntu">
+    Installation on Ubuntu
+  </a>
+<nav aria-label="Installation on Ubuntu" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rabbitmq-installation-on-docker">
+    RabbitMQ installation on Docker
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#starting-rabbitmq">
+    Starting RabbitMQ
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veryfying-that-rabbitmq-is-running">
+    Veryfying that RabbitMQ is running
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installing-the-management-plugin-web-ui">
+    Installing the management plugin (Web UI)
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-of-rabbitmq-usage-in-real-application">
+    Example of RabbitMQ usage in real application
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -736,9 +824,7 @@ service, or broker.</p>
 applications that are using the same RabbitMQ instance, similar to a logical
 container inside a broker; for example, separating working environments into
 development on one vhost and staging on another, keeping them within the same broker instead of setting up multiple brokers. Users, exchanges, queues, and so on are isolated on one specific vhost. A user connected to a particular vhost cannot access any resources (queue, exchange, and so on) from another vhost. Users can have different access privileges to different vhosts.</p>
-<p><strong>Connection</strong> is a physical network (TCP) connection between the application
-(publisher/consumer) and a broker. When the client disconnects or a system
-failure occurs, the connection is closed.</p>
+<p><strong>Connection</strong> is a physical network (TCP) connection between the application (publisher/consumer) and a broker. When the client disconnects or a system failure occurs, the connection is closed.</p>
 <p><strong>Channel</strong> is a virtual connection inside a connection. It reuses a connection, forgoing the need to reauthorize and open a new TCP stream. When messages are published or consumed, it is done over a channel. Many channels can be established within a single connection.</p>
 <p><strong>Exchange</strong> entity is in charge of applying routing rules for messages, making sure that messages are reaching their final destination. In other words, the exchange ensures that the received message ends up in the correct queues. Which queue the message ends up in depends on the rules defined by the exchange type. A queue needs to be bound to at least one exchange to be able to receive messages. Routing rules include direct (point-to-point), topic (publish-subscribe), fanout (multicast), and header exchanges.</p>
 <p><strong>Queue</strong> is a sequence of items; in this case, messages. The queue exists within the broker.</p>
@@ -796,6 +882,162 @@ application can subscribe to events from another application and respond by crea
 <figure>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/message_broker7.png"><img alt="message-broker" src="../images/message_broker7.png" width="600"/></a></p>
 </figure>
+<h3 id="installation-on-ubuntu">Installation on Ubuntu</h3>
+<p>Download the latest releases of the installed software, and verify that <code>curl</code>, <code>apt-transport-https</code> and GnuPG are on the system</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="gp">    $ </span>apt upgrade
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="gp">    $ </span>sudo apt install curl gnupg -y
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="gp">    $ </span>sudo apt install apt-transport-https
+</code></pre></div>
+<p>Ubuntu does not include RabbitMQ by default, so it must be added to the repository key before you proceed. Execute the following set of commands in a Terminal:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="gp">    $ </span>curl -fsSL
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">    https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-rel</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">    ease-signing-key.asc</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">    sudo apt-key add -</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="go">    sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list &lt;&lt;EOF</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="go">    deb https://dl.bintray.com/rabbitmq-erlang/debian [os release name] erlang</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="go">    deb https://dl.bintray.com/rabbitmq/debian [os release name] main</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="go">    EOF</span>
+</code></pre></div>
+<p>Install:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="gp">    $ </span>sudo apt install -y rabbitmq-server
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="gp">    $ </span>sudo apt install librabbitmq-dev
+</code></pre></div>
+<h4 id="rabbitmq-installation-on-docker">RabbitMQ installation on Docker</h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="gp">    $ </span>docker pull rabbitmq
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="gp">    $ </span>docker run -d --hostname my-rabbit --name my-rabbit -p <span class="m">5672</span>:5672 -p
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="go">    15672:15672 -e RABBITMQ_ERLANG_COOKIE='cookie_for_clustering' -e</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="go">    RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password --name some-</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="go">    rabbit rabbitmq:3-management</span>
+</code></pre></div>
+<h4 id="starting-rabbitmq">Starting RabbitMQ</h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="gp">    $ </span>rabbitmq-server start
+</code></pre></div>
+<p>Run the brker as a service:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="gp">    $ </span>sudo systemctl <span class="nb">enable</span> rabbitmq-server
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="gp">    $ </span>sudo systemctl start rabbitmq-server
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="gp">    $ </span>sudo systemctl status rabbitmq-server
+</code></pre></div>
+<h4 id="veryfying-that-rabbitmq-is-running">Veryfying that RabbitMQ is running</h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="gp">    $ </span>sudo service rabbitmq-server status
+</code></pre></div>
+<h4 id="installing-the-management-plugin-web-ui">Installing the management plugin (Web UI)</h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="gp">    $ </span>sudo rabbitmq-plugins <span class="nb">enable</span> rabbitmq_management
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="go">    Enabling plugins on node rabbit@host:</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="go">    rabbitmq_management</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="go">    The following plugins have been configured:</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="go">    rabbitmq_consistent_hash_exchange</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="go">    rabbitmq_event_exchange</span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="go">    rabbitmq_federation</span>
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="go">    rabbitmq_management</span>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="go">    rabbitmq_management_agent</span>
+<a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="go">    rabbitmq_shovel</span>
+<a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="go">    rabbitmq_web_dispatch</span>
+<a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="go">    Applying plugin configuration to rabbit@host...</span>
+<a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="go">    The following plugins have been enabled:</span>
+<a href="#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="go">    rabbitmq_management</span>
+<a href="#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="go">    rabbitmq_management_agent</span>
+<a href="#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="go">    rabbitmq_web_dispatch</span>
+</code></pre></div>
+<p>Navigate to <code>http://&lt;hostname&gt;:15672</code></p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/rabbitmq.png"><img alt="message-broker" src="../images/rabbitmq.png" width="400"/></a></p>
+</figure>
+<p>Configure users:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="gp">    $ </span>sudo rabbitmqctl add_user cc-admin taxi123
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="go">    Adding user "cc-admin" ...</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="gp">    $ </span>sudo rabbitmqctl set_user_tags cc-admin administrator
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="go">    Setting tags for user "cc-admin" to [administrator] ...</span>
+</code></pre></div>
+<p>Change guest default user and default password:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="gp">    $ </span>sudo rabbitmqctl change_password guest guest123
+</code></pre></div>
+<p>Main dashboard of the management console</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/rabbitmq1.png"><img alt="message-broker" src="../images/rabbitmq1.png" width="800"/></a></p>
+</figure>
+<p>Create the <code>cc-dev</code> user:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="gp">    $ </span>sudo rabbitmqctl add_user cc-dev taxi123
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="go">    Adding user "cc-dev" ...</span>
+</code></pre></div>
+<p>Create a vhost called <code>cc-dev-vhost</code>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="gp">    $ </span>sudo rabbitmqctl add_vhost cc-dev-vhost
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="go">    Adding vhost "cc-dev-vhost" ...</span>
+</code></pre></div>
+<p>As it stands, neither the <code>cc-admin</code>nor <code>cc-dev</code> users have permission to do anything on <code>cc-dev-vhost</code>. Fix this by giving the vhost full rights, as follows:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="gp">    $ </span>sudo rabbitmqctl set_permissions -p cc-dev-vhost cc-admin <span class="s2">".*"</span> <span class="s2">".*"</span> <span class="s2">".*"</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="go">    Setting permissions for user "cc-admin" in vhost "cc-dev-vhost" ... </span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="gp">    $ </span>sudo rabbitmqctl set_permissions -p cc-dev-vhost cc-dev <span class="s2">".*"</span> <span class="s2">".*"</span> <span class="s2">".*"</span>
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="go">    Setting permissions for user "cc-dev" in vhost "cc-dev-vhost" ...</span>
+</code></pre></div>
+<p>It is a triplet of permissions for the considered vhost, which grants <strong>configure</strong>, <strong>write</strong>, and <strong>read</strong> permissions on the designated resources for the considered user and vhost. See access control commands in the <a href="https://www.rabbitmq.com/access-control.html">documentation</a></p>
+<p>Alternative way is to do it via the management console:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/rabbitmq2.png"><img alt="message-broker" src="../images/rabbitmq2.png" width="800"/></a></p>
+</figure>
+<h3 id="example-of-rabbitmq-usage-in-real-application">Example of RabbitMQ usage in real application</h3>
+<p>Let's say we want to create Taxi App like this:</p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/rabbitmq3.png"><img alt="message-broker" src="../images/rabbitmq3.png" width="800"/></a></p>
+</figure>
+<p>The following steps on the above diagram:</p>
+<ol>
+<li>A customer uses CC's mobile application to book a taxi. A request is now sent
+from the mobile application to the Application Service. This request includes
+information about the trip that the customer wants to book.</li>
+<li>The Application Service stores the request in a database.</li>
+<li>The Application Service adds a message with information about the trip to a
+queue in RabbitMQ.</li>
+<li>Connected taxi cars subscribe to the message (the booking request).</li>
+<li>A taxi responds to the customer by sending a message back to RabbitMQ.</li>
+<li>The Application Service subscribes to the messages.</li>
+<li>Again, the Application Service stores the information in a database.</li>
+<li>The Application Service forwards the information to the customer.</li>
+<li>The taxi app starts to automatically send the taxi's geographical location at a
+given interval to RabbitMQ.</li>
+<li>The location of the taxi is then passed straight to the customer's mobile
+application, via WebSockets, so that they know when the taxi arrives.</li>
+</ol>
+<p><strong>Direct Exchange routing pattern</strong></p>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/rabbitmq4.png"><img alt="message-broker" src="../images/rabbitmq4.png" width="800"/></a></p>
+</figure>
+<p><strong>Topic routing pattern</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A routing pattern consists of several words separated by dots. A best
+practice to follow is to structure routing keys from the most general
+element to the most specific one, such as news.economy.usa or
+europe.sweden.stockholm.
+The topic exchange supports strict routing key matching and will also
+perform wildcard matching using * and # as placeholders for exactly one
+word and zero or more words, respectively.</p>
+</div>
+<figure>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/rabbitmq5.png"><img alt="message-broker" src="../images/rabbitmq5.png" width="800"/></a></p>
+</figure>
+<p><strong>Important points about consumers and queues in RabbitMQ:</strong></p>
+<ul>
+<li>A queue can have multiple consumers (unless the exclusive tag is used).</li>
+<li>Each channel can have multiple consumers.</li>
+<li>Each consumer uses server resources, so it is best to make sure not to use too
+many consumers.</li>
+<li>Channels are full-duplex, meaning that one channel can be used to both publish
+and consume messages.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no logical limit to the number of channels or consumers a
+RabbitMQ broker can handle. There are, however, limiting factors, such as
+available memory, broker CPU power, and network bandwidth.
+As each channel mobilizes memory and consumes CPU power, limiting
+the number of channels or consumers may be a consideration in some
+environments. The administrator can configure a maximum number of
+channels per connection by using the <code>channel_max</code> parameter.</p>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -807,7 +1049,7 @@ application can subscribe to events from another application and respond by crea
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Concurrency and Parallelism" class="md-footer__link md-footer__link--prev" href="../concurrency_parallelism/" rel="prev">
+<a aria-label="Previous: Testing" class="md-footer__link md-footer__link--prev" href="../testing/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -816,7 +1058,7 @@ application can subscribe to events from another application and respond by crea
 <span class="md-footer__direction">
                 Previous
               </span>
-              Concurrency and Parallelism
+              Testing
             </div>
 </div>
 </a>

@@ -67,9 +67,10 @@ nav:
           - machine_learning/math.md
       - NLP:
           - machine_learning/nlp/index.md
-          - Text Classification: machine_learning/nlp/text_classification.md
           - Information Search: machine_learning/nlp/information_search.md
           - Statistical Analysis of Text: machine_learning/nlp/statistical_text_analysis.md
+          - Text Classification: machine_learning/nlp/text_classification.md
+          - Voice Cloning: machine_learning/nlp/voice_cloning.md
 
 plugins:
   - section-index
