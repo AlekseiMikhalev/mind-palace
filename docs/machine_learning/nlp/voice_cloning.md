@@ -55,3 +55,16 @@ Examples of pre-trained voice cloning models:
 **Deep Voice 3**: This is a text-to-speech synthesis model developed by Baidu Research that uses a deep neural network to generate speech. Deep Voice 3 is capable of generating speech that sounds very natural and expressive. 
 
 **Mozilla TTS**: This is an open-source text-to-speech synthesis system developed by Mozilla that uses a deep neural network to generate speech. Mozilla TTS is capable of generating high-quality speech that sounds natural and expressive.
+
+## Training Multilingual Model for Voice Cloning
+
+1. **Choose library for TTS and STT**
+I chose up [Coqui TTS](https://tts.readthedocs.io/en/latest/index.html#) as it looked promising in terms of code usability, library support, open-source solutoin and number of pretrained models. It has good results regarding voice clonning for several languages, but not for Russian.
+The most relevant idea seemed to me to pick up multilingual *Vits* model and train it on [RUSLAN training dataset](https://www.kaggle.com/datasets/freezerainml/ruslan)
+
+2. **Train model**
+You can have a look at [My Google Colab Notebook](https://colab.research.google.com/drive/1W8zDyJh9LejR50xNbGfLd_92snyxVFXv?usp=sharing) as a result of my training attempts. Another training notebook example can be found here - [Kaggle training notebook](https://www.kaggle.com/code/freezerainml/vits-ruslan-training/notebook) on Kaggle.
+
+3. **Results**
+Unfortunately, Kaggle trainnig notebook resulted in trained model without speaker embedded. And my dozen of my training attempts were unlucky so far. 
+The issues rised during model training need to be urther investigated.  
