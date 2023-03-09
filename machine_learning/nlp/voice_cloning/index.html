@@ -665,8 +665,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#training-multilingual-model-for-voice-cloning">
-    Training Multilingual Model for Voice Cloning
+<a class="md-nav__link" href="#training-models-for-voice-cloning">
+    Training Models for Voice Cloning
   </a>
 </li>
 </ul>
@@ -703,8 +703,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#training-multilingual-model-for-voice-cloning">
-    Training Multilingual Model for Voice Cloning
+<a class="md-nav__link" href="#training-models-for-voice-cloning">
+    Training Models for Voice Cloning
   </a>
 </li>
 </ul>
@@ -768,7 +768,7 @@
 <p><strong>WaveNet</strong>: This is a neural network-based model for generating speech developed by DeepMind, a research company owned by Google. WaveNet is capable of generating high-quality speech that sounds very natural and human-like. .</p>
 <p><strong>Deep Voice 3</strong>: This is a text-to-speech synthesis model developed by Baidu Research that uses a deep neural network to generate speech. Deep Voice 3 is capable of generating speech that sounds very natural and expressive.</p>
 <p><strong>Mozilla TTS</strong>: This is an open-source text-to-speech synthesis system developed by Mozilla that uses a deep neural network to generate speech. Mozilla TTS is capable of generating high-quality speech that sounds natural and expressive.</p>
-<h2 id="training-multilingual-model-for-voice-cloning">Training Multilingual Model for Voice Cloning</h2>
+<h2 id="training-models-for-voice-cloning">Training Models for Voice Cloning</h2>
 <ol>
 <li>
 <p><strong>Choose library for TTS and STT</strong>
@@ -784,7 +784,21 @@
    Unfortunately, Kaggle trainnig notebook resulted in trained model without speaker embedded. And dozen of my training attempts were unlucky so far.
    The issues rised during model training need to be urther investigated.</p>
 </li>
+<li>
+<p><strong>Further experiments</strong>
+   After hours of diving deeper into Coqui library, I was able to run successfully trained Vits TTS model <a href="https://colab.research.google.com/drive/1JI5XfNt8_HYNB6A9oIapZXje670oT6L2?usp=sharing">Vits Google Colab Notebook</a>. It usually takes loooong hours of training in Google Colab, so after one epoch I checked if at least some results can be hearable. And....the model didn't work from restoring checkpoint:</p>
+</li>
 </ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/vits_error.png"><img alt="vits error" src="../images/vits_error.png" width="800"/></a></p>
+<p>The error happens when the model tries to initialize <code>language embedding layers</code>, and I should've used it as a hint, but it didn't ring the bell for me at that time.
+   I investigated the error and used recommendations regarding checking the initial parameters of the model and parameters from checkpoints. But I didn't find a correct solution, and clocks was ticking. Sad and disappointed...</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../images/one-flew-over-the-cuckoos-nest.png"><img alt="at least I tried" src="../images/one-flew-over-the-cuckoos-nest.png"/></a></p>
+<p>Well, yea, but it means nothing without results, so I decided to keep experimenting, and at least make good old Tacotron2 works.
+   I trained Tacotron2 TTS model see <strong>Tacotron Model Training</strong> in <a href="https://colab.research.google.com/drive/1JI5XfNt8_HYNB6A9oIapZXje670oT6L2#scrollTo=XanWwzrUknrq&amp;line=1&amp;uniqifier=1">Google Colab Notebook</a>. Tacotron is lighter and can be train a bit faster thatn Vits or GlowTTS. After three epochs I checked if the model can be resored from checkpoints and synthesize at least something. The result is:</p>
+<p><audio controls="">
+<source src="https://drive.google.com/file/d/1yxDxqdEHAAdSW7xNkKl7meT9mfwIRR9T/view?usp=sharing" type="audio/wav"/>
+      Your browser does not support the audio tag.
+   </audio></p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
