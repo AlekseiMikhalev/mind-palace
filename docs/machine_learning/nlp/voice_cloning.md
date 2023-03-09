@@ -77,9 +77,36 @@ Examples of pre-trained voice cloning models:
    ![at least I tried](images/one-flew-over-the-cuckoos-nest.png)
 
    Well, yea, but it means nothing without results, so I decided to keep experimenting, and at least make good old Tacotron2 works.
-   I trained Tacotron2 TTS model see **Tacotron Model Training** in [Google Colab Notebook](https://colab.research.google.com/drive/1JI5XfNt8_HYNB6A9oIapZXje670oT6L2#scrollTo=XanWwzrUknrq&line=1&uniqifier=1). Tacotron is lighter and can be train a bit faster thatn Vits or GlowTTS. After three epochs I checked if the model can be resored from checkpoints and synthesize at least something. The result is:
+   I trained Tacotron2 TTS model see **Tacotron Model Training** in [Google Colab Notebook](https://colab.research.google.com/drive/1JI5XfNt8_HYNB6A9oIapZXje670oT6L2#scrollTo=XanWwzrUknrq&line=1&uniqifier=1). Tacotron is lighter and can be train a bit faster thatn Vits or GlowTTS. After three epochs I checked if the model can be resored from checkpoints and synthesize at least something. 
+   
+   The result is:
 
-   <audio controls>
-      <source src="https://drive.google.com/file/d/1yxDxqdEHAAdSW7xNkKl7meT9mfwIRR9T/view?usp=sharing" type="audio/wav">
-      Your browser does not support the audio tag.
+   <audio controls="controls">
+      <source type="audio/wav" src="../audio/tacotron2_3epoch.wav"></source>
    </audio>
+
+   Well, something definitely goes wrong...It is learning nothing🧐
+
+   Alright, another try - **GlowTTS** model:
+   Same steps, but this time I trained model for 6 epochs first, checked that it can restore from checkpoints, and trained on 11 more epochs. So in total the model was trained on 17 epochs, which is still a small number, but it should be enough to check that at least it learns something. 
+   Please check my [GlowTTS Google Colab Notebook](https://colab.research.google.com/drive/1wzDgwgXW3hbus6UEk9fkIFRiDpd08PNh?usp=sharing) for code and results.
+
+   The synthesis result for the text *"Вот и десять лет мы отвечали наверное на этот вопрос, главный, и вместе с ним на много других"* is:
+
+   <audio controls="controls">
+      <source type="audio/wav" src="../audio/growtts_17epocs.wav"></source>
+   </audio>
+
+   Speech synthesis still sounds bad, but it starts recognizing words, so I'm on the right way. Just need to keep training (several days, at least up to 100 epochs), and I will probably get good results 🤓
+
+   After that, I decided to check, just by any chance, if the model can [clone voice from a sample file](https://colab.research.google.com/drive/1wzDgwgXW3hbus6UEk9fkIFRiDpd08PNh?authuser=3#scrollTo=lyopXwhvRsGt&line=1&uniqifier=1). And...
+
+   ![glowtts error](images/glowtts_error.png){ width="800" }
+     
+   No way😟...`compute_embedding_from_clip` looks like the model doesn't have speaker embedding by default, and I had to specify it on initialization, before training...?! I found an answer on my question [here](https://github.com/coqui-ai/TTS/discussions/1178) 🤦‍♂️
+
+   ![tony](images/tony_stark.gif){ align=left } 
+   
+   **Outcomes and insights**: Yes, I know, totally screwed up. Lessons learnt (hopefully). This task on voice cloning was failed so far, but challenged me a lot. 
+   I think it should be definitely another, simpler way to do voice cloning for target language (if you couldn't find already pretrained good model ad download it, of course). Probably I just have lack of knowledge, but I will figure out it later. Never give up!
+   Next idea is to research and understand which models [Resemble.ai](https://www.resemble.ai/russian-tts/) uses for so many languages, and read more papers about language model transfering. 
