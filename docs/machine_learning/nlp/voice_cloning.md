@@ -1,6 +1,5 @@
 !!!info
-    **Voice cloning**, also known as text-to-speech synthesis or speech synthesis, is the process of creating a computer-generated version of a person's voice. This technology has many applications, including creating personalized voice assistants, generating voiceovers for videos, and creating text-to-speech systems for people with disabilities.
-
+**Voice cloning**, also known as text-to-speech synthesis or speech synthesis, is the process of creating a computer-generated version of a person's voice. This technology has many applications, including creating personalized voice assistants, generating voiceovers for videos, and creating text-to-speech systems for people with disabilities.
 
 There are two main approaches to voice cloning: concatenative synthesis and parametric synthesis.
 
@@ -32,7 +31,6 @@ The process of creating a synthetic voice using parametric synthesis involves se
 
 3. _Synthesizing Speech_: Finally, the trained model can be used to generate new speech based on text input. The model is capable of generating speech in the style of any of the speakers used in the training data, as well as creating entirely new voices that have never been heard before.
 
-
 Parametric synthesis is more promissing approach and in detail it works as follows steps:
 
 **Preprocessing**: The speech data is preprocessed to extract useful features, such as the spectral envelope, the fundamental frequency (pitch), and the duration of each phoneme.
@@ -45,26 +43,43 @@ Parametric synthesis is more promissing approach and in detail it works as follo
 
 **Training**: The deep neural network is trained on the speech data and text input to learn the mapping between the two. This involves optimizing the model's parameters to minimize the difference between the synthesized speech and the actual speech.
 
-
 Examples of pre-trained voice cloning models:
 
-**Tacotron 2**: This is a state-of-the-art text-to-speech model developed by Google that uses a combination of convolutional and recurrent neural networks to generate speech. The model has been trained on a large dataset of speech data and can generate speech that sounds natural and expressive. 
+**Tacotron 2**: This is a state-of-the-art text-to-speech model developed by Google that uses a combination of convolutional and recurrent neural networks to generate speech. The model has been trained on a large dataset of speech data and can generate speech that sounds natural and expressive.
 
 **WaveNet**: This is a neural network-based model for generating speech developed by DeepMind, a research company owned by Google. WaveNet is capable of generating high-quality speech that sounds very natural and human-like. .
 
-**Deep Voice 3**: This is a text-to-speech synthesis model developed by Baidu Research that uses a deep neural network to generate speech. Deep Voice 3 is capable of generating speech that sounds very natural and expressive. 
+**Deep Voice 3**: This is a text-to-speech synthesis model developed by Baidu Research that uses a deep neural network to generate speech. Deep Voice 3 is capable of generating speech that sounds very natural and expressive.
 
 **Mozilla TTS**: This is an open-source text-to-speech synthesis system developed by Mozilla that uses a deep neural network to generate speech. Mozilla TTS is capable of generating high-quality speech that sounds natural and expressive.
 
-## Training Multilingual Model for Voice Cloning
+## Training Models for Voice Cloning
 
 1. **Choose library for TTS and STT**
-I chose up [Coqui TTS](https://tts.readthedocs.io/en/latest/index.html#) as it looked promising in terms of code usability, library support, open-source solutoin and number of pretrained models. It has good results regarding voice clonning for several languages, but not for Russian.
-The most relevant idea seemed to me to pick up multilingual *Vits* model and train it on [RUSLAN training dataset](https://www.kaggle.com/datasets/freezerainml/ruslan)
+   I chose up [Coqui TTS](https://tts.readthedocs.io/en/latest/index.html#) as it looked promising in terms of code usability, library support, open-source solutoin and number of pretrained models. It has good results regarding voice clonning for several languages, but not for Russian.
+   The most relevant idea seemed to me to pick up multilingual _Vits_ model and train it on [RUSLAN training dataset](https://www.kaggle.com/datasets/freezerainml/ruslan)
 
 2. **Train model**
-You can have a look at [My Google Colab Notebook](https://colab.research.google.com/drive/1W8zDyJh9LejR50xNbGfLd_92snyxVFXv?usp=sharing) as a result of my training attempts. Another training notebook example can be found here - [Kaggle training notebook](https://www.kaggle.com/code/freezerainml/vits-ruslan-training/notebook) on Kaggle.
+   You can have a look at [My Google Colab Notebook](https://colab.research.google.com/drive/1W8zDyJh9LejR50xNbGfLd_92snyxVFXv?usp=sharing) as a result of my training attempts. Another training notebook example can be found here - [Kaggle training notebook](https://www.kaggle.com/code/freezerainml/vits-ruslan-training/notebook) on Kaggle.
 
 3. **Results**
-Unfortunately, Kaggle trainnig notebook resulted in trained model without speaker embedded. And my dozen of my training attempts were unlucky so far. 
-The issues rised during model training need to be urther investigated.  
+   Unfortunately, Kaggle trainnig notebook resulted in trained model without speaker embedded. And dozen of my training attempts were unlucky so far.
+   The issues rised during model training need to be urther investigated.
+
+4. **Further experiments**
+   After hours of diving deeper into Coqui library, I was able to run successfully trained Vits TTS model [Vits Google Colab Notebook](https://colab.research.google.com/drive/1JI5XfNt8_HYNB6A9oIapZXje670oT6L2?usp=sharing). It usually takes loooong hours of training in Google Colab, so after one epoch I checked if at least some results can be hearable. And....the model didn't work from restoring checkpoint:
+
+   ![vits error](images/vits_error.png){ width="800" }
+
+   The error happens when the model tries to initialize `language embedding layers`, and I should've used it as a hint, but it didn't ring the bell for me at that time.
+   I investigated the error and used recommendations regarding checking the initial parameters of the model and parameters from checkpoints. But I didn't find a correct solution, and clocks was ticking. Sad and disappointed...
+
+   ![at least I tried](images/one-flew-over-the-cuckoos-nest.png)
+
+   Well, yea, but it means nothing without results, so I decided to keep experimenting, and at least make good old Tacotron2 works.
+   I trained Tacotron2 TTS model see **Tacotron Model Training** in [Google Colab Notebook](https://colab.research.google.com/drive/1JI5XfNt8_HYNB6A9oIapZXje670oT6L2#scrollTo=XanWwzrUknrq&line=1&uniqifier=1). Tacotron is lighter and can be train a bit faster thatn Vits or GlowTTS. After three epochs I checked if the model can be resored from checkpoints and synthesize at least something. The result is:
+
+   <audio controls>
+      <source src="https://drive.google.com/file/d/1yxDxqdEHAAdSW7xNkKl7meT9mfwIRR9T/view?usp=sharing" type="audio/wav">
+      Your browser does not support the audio tag.
+   </audio>
