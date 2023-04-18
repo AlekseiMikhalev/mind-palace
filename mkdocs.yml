@@ -40,7 +40,7 @@ nav:
       - Data Center:
           - data_centers.md
       - Load Balancer:
-          - load_balancer.md
+          - backend/load_balancer.md
       - Message Broker:
           - backend/message_broker.md
       - Containers Orchestration:
@@ -71,6 +71,10 @@ nav:
           - Statistical Analysis of Text: machine_learning/nlp/statistical_text_analysis.md
           - Text Classification: machine_learning/nlp/text_classification.md
           - Voice Cloning: machine_learning/nlp/voice_cloning.md
+
+  - Coding Interviews:
+      - Live Coding Practice:
+          - coding_interviews/live_coding.md
 
 plugins:
   - section-index
